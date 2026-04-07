@@ -456,6 +456,27 @@
       margin-top: 16px;
     }
 
+    /* ===== ゴールドフェード点滅 ===== */
+    @keyframes goldFade {
+      0%, 100% { color: var(--text); text-shadow: none; }
+      50% { color: #C9A84C; text-shadow: 0 0 12px rgba(201,168,76,0.5); }
+    }
+    .gold-blink {
+      animation: goldFade 2.4s ease-in-out infinite;
+    }
+
+    /* ===== 多色フェード点滅（ぱすてる） ===== */
+    @keyframes pastelFade {
+      0%   { color: #F2B48A;  text-shadow: 0 0 8px rgba(242,180,138,0.3); }
+      25%  { color: #EFA0BB;  text-shadow: 0 0 8px rgba(239,160,187,0.3); }
+      50%  { color: #9ED4B0;  text-shadow: 0 0 8px rgba(158,212,176,0.3); }
+      75%  { color: #F7C8D4;  text-shadow: 0 0 8px rgba(247,200,212,0.3); }
+      100% { color: #9DCFE8;  text-shadow: 0 0 8px rgba(157,207,232,0.3); }
+    }
+    .marine-blink {
+      animation: pastelFade 10s ease-in-out infinite;
+    }
+
     /* ===== デスクトップ調整 ===== */
     @media (min-width: 640px) {
       .hero-body { max-width: 480px; margin: 0 auto; width: 100%; }
@@ -479,13 +500,13 @@
   <!-- ===== PAGE 1: ヒーロー ===== -->
   <section class="page" id="page1">
     <div class="hero-header">
-      <div class="logo-text">ぱすてる<br>デイサービス和みの城</div>
+      <div class="logo-text"><span class="marine-blink">ぱすてる</span><br><span style="color:var(--text);">デイサービス和みの城</span></div>
       <a href="tel:0474565855" class="header-tel">📞 今すぐ電話</a>
     </div>
     <div class="hero-body">
       <div class="hero-content">
         <span class="tag">船橋市松が丘・地域最安級</span>
-        <h1>お泊まりも安心の<br><em>少人数ケア</em></h1>
+        <h1 class="gold-blink">お泊まりも安心の<br><em>少人数ケア</em></h1>
         <p>「経済的な理由でお泊まりを諦めてほしくない」<br>365日24時間対応の家庭的なデイサービス。<br>ケアマネ様のご相談もLINE・FAXでスムーズに。</p>
         <div class="hero-btns">
           <a href="https://line.me/R/ti/p/@791rlbey" target="_blank" class="btn btn-line">
@@ -509,7 +530,7 @@
   <section class="page" id="page2">
     <div class="page-inner">
       <span class="tag orange">選ばれる理由</span>
-      <h2 class="page-title">「和みの城」が<br>選ばれる3つの理由</h2>
+      <h2 class="page-title gold-blink">「和みの城」が<br>選ばれる3つの理由</h2>
 
       <div class="reason-card">
         <div class="reason-num">01</div>
@@ -535,7 +556,7 @@
 
       <div style="height:1px;background:var(--peach);margin:20px 0;"></div>
       <span class="tag">料金</span>
-      <h3 style="font-size:1.1rem;font-weight:900;margin:10px 0 14px;">圧倒的な低価格でご家族の負担を軽減</h3>
+      <h3 class="gold-blink" style="font-size:1.1rem;font-weight:900;margin:10px 0 14px;">圧倒的な低価格でご家族の負担を軽減</h3>
 
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
         <div class="price-card">
@@ -566,7 +587,7 @@
   <section class="page" id="page3">
     <div class="page-inner">
       <span class="tag orange">よくある質問</span>
-      <h2 class="page-title">はじめての方から<br>よくあるご質問</h2>
+      <h2 class="page-title gold-blink">はじめての方から<br>よくあるご質問</h2>
 
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">
@@ -635,7 +656,7 @@
   <section class="page" id="page4">
     <div class="page-inner">
       <span class="tag orange">アクセス</span>
-      <h2 class="page-title">施設へのアクセス</h2>
+      <h2 class="page-title gold-blink">施設へのアクセス</h2>
 
       <div class="map-wrap">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.258836582452!2d140.05263177673516!3d35.73335557256973!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60187f872242690d%3A0x64369e7f8589098!2z44CSMjc0LTAwNjQg5Y2D6JGJ55yM6Ii55qmL5biC5p2-44GM5LiY77yU5LiB55uu77yR77yY4oiS77yX!5e0!3m2!1sja!2sjp!4v1711794750000!5m2!1sja!2sjp" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
