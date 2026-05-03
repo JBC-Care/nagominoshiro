@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ぱすてるデイサービス和みの城</title>
+    <!-- Tailwind CSS CDN (本番用にはビルドされたCSSをインライン化するのが理想ですが、利便性のためCDNを使用しています) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+        }
+        .faq-item.open .faq-content {
+            max-height: 200px;
+            padding-bottom: 1.5rem;
+        }
+        .faq-item.open .chevron {
+            transform: rotate(180deg);
+        }
+        .selection-bg::selection {
+            background-color: #FFDAC1;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#E67A30',
+                        secondary: '#FFDAC1',
+                        accent: '#FFB7B2',
+                        line: '#06C755',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="min-h-screen bg-[#FFF9F5] text-[#4A4A4A] selection-bg">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-[#FFDAC1]">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg shadow-sm overflow-hidden flex items-center justify-center bg-gradient-to-br from-[#FFB7B2] to-[#FFDAC1]">
+                    <img src="/logo.png" alt="" class="w-full h-full object-contain" onerror="this.style.display='none'">
+                </div>
+                <span class="font-bold text-lg tracking-tight text-[#E67A30]">ぱすてるデイサービス和みの城</span>
+            </div>
+            <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+                <a href="#features" class="hover:text-[#E67A30] transition-colors">特徴</a>
+                <a href="#pricing" class="hover:text-[#E67A30] transition-colors">料金</a>
+                <a href="#contact" class="hover:text-[#E67A30] transition-colors">お問い合わせ</a>
+                <a href="#access" class="hover:text-[#E67A30] transition-colors">アクセス</a>
+                <a href="https://line.me/R/ti/p/@791rlbey" target="_blank" class="bg-[#06C755] text-white px-4 py-2 rounded-full flex items-center gap-2 hover:opacity-90 transition-opacity">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg>
+                    公式LINE相談
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 overflow-hidden">
+        <div class="absolute top-0 right-0 -z-10 w-1/2 h-full bg-[#FFDAC1]/20 rounded-l-[100px] transform translate-x-1/4"></div>
+        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <span class="inline-block px-4 py-1 bg-[#FFB7B2] text-white text-sm font-bold rounded-full mb-6">
+                    船橋市松が丘・地域最安級
+                </span>
+                <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6 text-[#4A4A4A]">
+                    お泊まりも安心の少人数ケア
+                </h1>
+                <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                    「経済的な理由でお泊まりを諦めてほくない」<br>
+                    そんな想いから生まれた、365日24時間対応の家庭的なデイサービスです。<br>
+                    ケアマネジャー様のご相談もLINE・FAXでスムーズに対応。
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="https://line.me/R/ti/p/@791rlbey" target="_blank" class="bg-[#06C755] text-white px-8 py-4 rounded-2xl font-bold text-center shadow-lg shadow-[#06C755]/20 hover:scale-105 transition-transform">
+                        公式LINE相談
+                    </a>
+                    <a href="tel:0474565855" class="bg-white border-2 border-[#FFDAC1] text-[#E67A30] px-8 py-4 rounded-2xl font-bold text-center hover:bg-[#FFDAC1]/10 transition-colors">
+                        お電話で相談する
+                    </a>
+                </div>
+            </div>
+            <div class="relative">
+                <div class="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border-8 border-white">
+                    <img src="/ヒーローイメージ.png" alt="笑顔のスタッフ" class="w-full h-full object-cover bg-[#FFDAC1]/20" onerror="this.src='https://placehold.jp/24/fff5f5/e67a30/800x600.png?text=画像が見つかりません'">
+                </div>
+                <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl border border-[#FFDAC1] max-w-[240px]">
+                    <div class="flex items-center gap-3 mb-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E67A30" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        <span class="font-bold">定員10名の少人数制</span>
+                    </div>
+                    <p class="text-xs text-gray-500">一人ひとりに目が届く、家庭的な環境で安心してお過ごしいただけます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-16">圧倒的な低価格で、ご家族の負担を軽減</h2>
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto text-left">
+                <div class="bg-[#FFF5F5] p-8 rounded-3xl border border-[#FFB7B2]">
+                    <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E67A30" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        宿泊費用
+                    </h3>
+                    <div class="text-4xl font-bold text-[#E67A30] mb-2">1,100<span class="text-sm text-gray-500 ml-1">円 / 1泊</span></div>
+                    <p class="text-sm text-gray-600">最大5名までのお泊まりサービスを実施。急なご入用にも対応可能です。</p>
+                </div>
+                <div class="bg-[#FFF9F5] p-8 rounded-3xl border border-[#FFDAC1]">
+                    <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E67A30" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        お食事代
+                    </h3>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex justify-between border-b border-gray-200 pb-1"><span>朝食</span><span class="font-bold">370円</span></li>
+                        <li class="flex justify-between border-b border-gray-200 pb-1"><span>昼食</span><span class="font-bold">400円</span></li>
+                        <li class="flex justify-between border-b border-gray-200 pb-1"><span>夕食</span><span class="font-bold">470円</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-[#FFF9F5]">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-12">「和みの城」が選ばれる理由</h2>
+            <div class="grid md:grid-cols-3 gap-8 text-left">
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-[#FFDAC1]">
+                    <div class="w-12 h-12 bg-[#FFF9F5] rounded-xl flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E67A30" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h4 class="font-bold mb-3">10名定員の家庭的なケア</h4>
+                    <p class="text-sm text-gray-500 leading-relaxed">大人数が苦手な方でも、落ち着いて過ごせる環境。一人ひとりのペースに合わせたサポートを徹底しています。</p>
+                </div>
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-[#FFDAC1]">
+                    <div class="w-12 h-12 bg-[#FFF9F5] rounded-xl flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E67A30" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <h4 class="font-bold mb-3">365日24時間対応</h4>
+                    <p class="text-sm text-gray-500 leading-relaxed">土日祝日はもちろん、夜間のお泊まりも対応。ご家族の急な予定や介護負担の軽減に寄り添います。</p>
+                </div>
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-[#FFDAC1]">
+                    <div class="w-12 h-12 bg-[#FFF9F5] rounded-xl flex items-center justify-center mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E67A30" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <h4 class="font-bold mb-3">船橋市松が丘の静かな環境</h4>
+                    <p class="text-sm text-gray-500 leading-relaxed">住宅街の中にある、まるで自宅のような安心感。地域に根ざしたサービスを提供しています。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="bg-[#FFF5F5] rounded-[40px] p-8 md:p-12 border-2 border-[#FFB7B2] relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-[#FFB7B2]/20 rounded-full -mr-16 -mt-16"></div>
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold mb-4">お問い合わせ・ご見学予約</h2>
+                    <p class="text-sm text-gray-600">
+                        介助優先のため、可能な限り記録が残る<br class="md:hidden">
+                        <span class="font-bold text-[#E67A30]">LINEまたはFAX</span>をお願いしております。
+                    </p>
+                </div>
+                <div class="grid gap-6">
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <a href="https://line.me/R/ti/p/@791rlbey" target="_blank" class="flex-1 flex items-center gap-6 bg-[#06C755] text-white p-6 rounded-3xl hover:opacity-95 transition-opacity group">
+                            <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="bg-white text-[#06C755] text-[10px] font-bold px-2 py-0.5 rounded uppercase">Priority 1</span>
+                                    <span class="font-bold text-xl">公式LINE相談</span>
+                                </div>
+                                <p class="text-sm opacity-90">空き状況確認・見学予約に。24時間送信OK。</p>
+                            </div>
+                        </a>
+                        <div class="bg-white p-4 rounded-3xl border-2 border-[#06C755] flex flex-col items-center justify-center gap-2 shrink-0">
+                            <img src="https://qr-official.line.me/gs/M_791rlbey_GW.png?oat_content=qr" alt="QR" class="w-24 h-24">
+                            <span class="text-[10px] font-bold text-[#06C755]">QRコードで追加</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-6 bg-white border-2 border-[#FFDAC1] p-6 rounded-3xl">
+                        <div class="w-16 h-16 bg-[#FFDAC1]/20 rounded-2xl flex items-center justify-center text-[#E67A30]">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="bg-[#FFDAC1] text-[#E67A30] text-[10px] font-bold px-2 py-0.5 rounded uppercase">Priority 2</span>
+                                <span class="font-bold text-xl text-[#4A4A4A]">FAX: 050-3730-6032</span>
+                            </div>
+                            <p class="text-sm text-gray-500">指示書・情報提供書の送付に。24時間受付。</p>
+                        </div>
+                    </div>
+                    <a href="tel:0474565855" class="flex items-center gap-6 bg-white border-2 border-[#FFB7B2] p-6 rounded-3xl hover:bg-[#FFB7B2]/5 transition-colors">
+                        <div class="w-16 h-16 bg-[#FFB7B2]/20 rounded-2xl flex items-center justify-center text-[#E67A30]">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="bg-[#FFB7B2] text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase">Priority 3</span>
+                                <span class="font-bold text-xl text-[#4A4A4A]">TEL: 047-456-5855</span>
+                            </div>
+                            <p class="text-sm text-gray-500">お急ぎのご相談やLINEが難しい場合に。</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Access Section -->
+    <section id="access" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">アクセス</h2>
+            <p class="text-gray-600 mb-12">〒274-0064 千葉県船橋市松が丘4-18-7</p>
+            <div class="max-w-5xl mx-auto">
+                <div class="bg-white rounded-[40px] overflow-hidden shadow-xl border-2 border-[#FFDAC1] aspect-video md:aspect-[21/9]">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.258836582452!2d140.05263177673516!3d35.73335557256973!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60187f872242690d%3A0x64369e7f8589098!2z44CSMjc0LTAwNjQg5Y2D6JGJ55yM6Ii55qmL5biC5p2-44GM5LiY77yU5LiB55uu77yR77yY4oiS77yX!5e0!3m2!1sja!2sjp!4v1711794750000!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-[#FFF9F5]">
+        <div class="max-w-3xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">よくあるご質問</h2>
+            <div class="space-y-4">
+                <div class="faq-item bg-white rounded-2xl border border-[#FFDAC1] overflow-hidden">
+                    <button class="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors" onclick="toggleFaq(this)">
+                        <span class="font-bold flex items-center gap-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E67A30" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                            1泊の食事はどうなりますか？
+                        </span>
+                        <svg class="chevron transition-transform" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq-content px-6 text-gray-600 text-sm">
+                        初日の昼食・夕食、翌日の朝食・昼食の計4食をご提供する例が一般的です。もちろん、ご希望に合わせて調整可能です。
+                    </div>
+                </div>
+                <div class="faq-item bg-white rounded-2xl border border-[#FFDAC1] overflow-hidden">
+                    <button class="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors" onclick="toggleFaq(this)">
+                        <span class="font-bold flex items-center gap-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E67A30" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                            宿泊費はいくらですか？
+                        </span>
+                        <svg class="chevron transition-transform" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq-content px-6 text-gray-600 text-sm">
+                        自費分として1泊1,100円（税込）を頂戴しております。お食事代を合わせても非常にリーズナブルにご利用いただけます。
+                    </div>
+                </div>
+                <div class="faq-item bg-white rounded-2xl border border-[#FFDAC1] overflow-hidden">
+                    <button class="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors" onclick="toggleFaq(this)">
+                        <span class="font-bold flex items-center gap-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E67A30" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                            急ぎの時は電話してもいいですか？
+                        </span>
+                        <svg class="chevron transition-transform" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq-content px-6 text-gray-600 text-sm">
+                        はい、もちろんです。お急ぎの場合やLINEでの操作が難しい場合は、お気軽に 047-456-5855 までお電話ください。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-[#FFDAC1] py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center gap-2 mb-6">
+                        <div class="w-8 h-8 bg-gradient-to-br from-[#FFB7B2] to-[#FFDAC1] rounded-lg shadow-sm"></div>
+                        <span class="font-bold text-lg text-[#E67A30]">ぱすてるデイサービス和みの城</span>
+                    </div>
+                    <p class="text-sm text-gray-500">
+                        〒274-0064 千葉県船橋市松が丘4-18-7<br>
+                        少人数制・24時間365日対応デイサービス
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 gap-8 text-sm text-gray-500">
+                    <div>
+                        <h5 class="font-bold mb-4 text-[#4A4A4A]">Menu</h5>
+                        <ul class="space-y-2">
+                            <li><a href="#features" class="hover:text-[#E67A30]">特徴</a></li>
+                            <li><a href="#pricing" class="hover:text-[#E67A30]">料金</a></li>
+                            <li><a href="#contact" class="hover:text-[#E67A30]">お問い合わせ</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h5 class="font-bold mb-4 text-[#4A4A4A]">Contact</h5>
+                        <ul class="space-y-2">
+                            <li>TEL: 047-456-5855</li>
+                            <li>FAX: 050-3730-6032</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-gray-100 text-center text-xs text-gray-400">
+                &copy; 2024 ぱすてるデイサービス和みの城. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleFaq(button) {
+            const item = button.parentElement;
+            const isOpen = item.classList.contains('open');
+            
+            // Close all other items
+            document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('open'));
+            
+            if (!isOpen) {
+                item.classList.add('open');
+            }
+        }
+    </script>
+</body>
+</html>
